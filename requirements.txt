@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+transformers
+torch  # optional, but likely needed for your model
