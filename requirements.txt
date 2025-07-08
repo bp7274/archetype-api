@@ -2,3 +2,7 @@ fastapi
 uvicorn
 transformers
 torch  # optional, but likely needed for your model
+gradio_client
+pydantic
+
+
