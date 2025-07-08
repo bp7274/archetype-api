@@ -20,7 +20,14 @@ def generate_quote(data: InputData):
     prompt = f"Age: {data.age}, Location: {data.location}, Profession: {data.profession}, Personality: {data.personality}"
     
     # Generate quote
-    result = generator(prompt, max_length=100, do_sample=True)[0]['generated_text']
+   result = generator(
+    prompt,
+    max_new_tokens=60,
+    do_sample=True,
+    temperature=0.8,  # controls creativity
+    top_p=0.9         # nucleus sampling
+)[0]['generated_text']
+
     
     return {"quote": result}
 
