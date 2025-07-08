@@ -1,4 +1,0 @@
-fastapi
-uvicorn
-transformers
-torch  # Optional: include only if your model needs PyTorch
