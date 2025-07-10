@@ -1,14 +1,11 @@
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import requests
-
-
-HF_TOKEN = "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"
+# Your public Hugging Face model (no token needed)
 MODEL_NAME = "bp7274/soulprint-model"
+# No authorization header needed for public models
 headers = {
-    "Authorization": f"Bearer {HF_TOKEN}",
     "Content-Type": "application/json"
 }
 class UserInput(BaseModel):
@@ -17,18 +14,19 @@ class UserInput(BaseModel):
     profession: str
     personality: str
 app = FastAPI()
-# Optional: for Render's GET ping
+# GET for health check (Render pings this)
 @app.get("/")
 def root():
     return {"message": "Service is running"}
-# Optional: for frontend (e.g., Unity, browser)
+# Enable CORS (use restrictively in production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # You can limit this to e.g., ["https://yourdomain.com"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Main route to generate quote
 @app.post("/")
 async def generate_quote(data: UserInput):
     try:
@@ -47,5 +45,12 @@ async def generate_quote(data: UserInput):
             return {"quote": output}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+
+
+
 
 
