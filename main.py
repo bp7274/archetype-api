@@ -6,7 +6,7 @@ import os
 import uvicorn
 
 # Replace with your actual Hugging Face token
-HF_TOKEN = "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"
+HF_TOKEN = "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"
 MODEL_NAME = "bp7274/soulprint-model"
 
 # Set headers for the Inference API
