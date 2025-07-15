@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import requests
 # Your public Hugging Face model (no token needed)
-MODEL_NAME = "bp7274/soulprint-model"
+MODEL_NAME = "bp7274/soulprint"
 # No authorization header needed for public models
 headers = {
     "Content-Type": "application/json"
